@@ -5,19 +5,16 @@ pd.set_option('display.max_columns', None)
 pd.set_option('max_colwidth', None)
 
 movieData = pd.read_csv('./rotten_tomatoes_movies.csv')
-favMovie = "Harry Potter and the Prisoner of Azkaban"
+hpMovie = "Harry Potter and the Prisoner of Azkaban"
 
-print("Rating Analysis of " + favMovie)
-
-#print(movieData.head())
-#print(movieData["movie_title"])
+print("Rating Analysis of " + hpMovie)
 
 print("\nThe data for this movie is:")
 print("\n")
-favMovieBooleanList = movieData["movie_title"] == favMovie
-favMovieData = movieData.loc[favMovieBooleanList]
+hpMovieBooleanList = movieData["movie_title"] == hpMovie
+hpMovieData = movieData.loc[hpMovieBooleanList]
 
-print(favMovieData)
+print(hpMovieData)
 print("\n\n")
 
 scifiMovieBooleanList = movieData["genres"].str.contains("Science Fiction & Fantasy")
@@ -26,31 +23,31 @@ scifiMovieData = movieData.loc[scifiMovieBooleanList]
 
 numOfMovies = scifiMovieData.shape[0]
 
-print("We will be comparing " + favMovie +
+print("We will be comparing " + hpMovie +
       " to other movies under the genre scifi in the data set.\n")
 print("There are " + str(numOfMovies) + " movies under the category Science Fiction & Fantasy.")
 
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
-input("Press enter to see more information about how " + favMovie +
+input("Press enter to see more information about how " + hpMovie +
       " compares to other movies in this genre.\n")
 
 min = scifiMovieData['audience_rating'].min()
 print("The min audience rating of the data set is: " + str(min))
-print(favMovie + " is rated 78 points higher than the lowest rated movie.")
+print(hpMovie + " is rated 78 points higher than the lowest rated movie.")
 print()
 
 max = scifiMovieData['audience_rating'].max()
 print("The max audience rating of the data set is: " + str(max))
-print(favMovie + " is rated 14 points lower than the highest rated movie.")
+print(hpMovie + " is rated 14 points lower than the highest rated movie.")
 print()
 
 mean = scifiMovieData['audience_rating'].mean()
 print("The mean audience rating of the data set is: " + str(mean))
-print(favMovie + " is higher than the mean movie rating.")
+print(hpMovie + " is higher than the mean movie rating.")
 
 median = scifiMovieData['audience_rating'].median()
 print("The median audience rating of the data set is: " + str(median))
-print(favMovie + " is higher than the median movie rating.")
+print(hpMovie + " is higher than the median movie rating.")
 
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
 input("Press enter to see data visualizations.\n")
@@ -79,11 +76,11 @@ plt.ylabel("Critic Rating")
 plt.xlim(0, 100)
 plt.ylim(0, 100)
 
-plt.scatter(data = favMovieData, x = "audience_rating", y = "critic_rating", label = favMovie)
+plt.scatter(data = hpMovieData, x = "audience_rating", y = "critic_rating", label = hpMovie)
 
 plt.legend()
 
-plt.scatter(data = favMovieData, x = "audience_rating", y = "critic_rating")
+plt.scatter(data = hpMovieData, x = "audience_rating", y = "critic_rating")
 plt.legend()
 
 print(
@@ -91,8 +88,8 @@ print(
 )
 print()
 
-print("Close the graph by pressing the 'X' in the top right corner.")
+print("Press 'X' to close")
 
 plt.show()
 
-print("\nThank you for reading through my data analysis!")
+print("\nThe End!")
